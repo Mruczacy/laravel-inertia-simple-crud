@@ -4,10 +4,10 @@ import Welcome from '@/Jetstream/Welcome.vue';
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLayout title="Lista produktów">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
+                Lista Produktów
             </h2>
         </template>
 
