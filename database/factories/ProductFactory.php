@@ -14,10 +14,12 @@ class ProductFactory extends Factory
 
     public function definition(): array
     {
+        $base_price = $this->faker->randomFloat(2, 0, 100);
+        $discount_price = $this->faker->randomFloat(2, 0, $base_price - 1);
         return [
             'name' => $this->faker->name(),
-            'base_price' => $this->faker->randomFloat(2, 0, 100),
-            'discount_price' => $this->faker->randomFloat(2, 0, 100),
+            'base_price' => $base_price,
+            'discount_price' => $discount_price,
             'description' => $this->faker->text(),
         ];
     }
