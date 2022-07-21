@@ -16,9 +16,8 @@ class DatabaseSeeder extends Seeder
             'name' => env('APP_TEST_USERNAME'),
             'email' => env('APP_TEST_EMAIL'),
             'password' => bcrypt(env('APP_TEST_PASSWORD')),
-
         ]);
 
-        Product::factory()->create(10);
+        Product::factory()->count(10)->create();
     }
 }
