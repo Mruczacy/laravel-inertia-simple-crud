@@ -14,7 +14,9 @@ export default {
             this.$inertia.get(route('products.create'));
         },
         deleteProduct(product) {
-            this.$inertia.delete(route('products.destroy', product));
+            if (confirm('Are you sure you want to delete this product?')) {
+                this.$inertia.delete(route('products.destroy', product));
+            }
         },
         editProduct(product) {
             this.$inertia.get(route('products.edit', product));
