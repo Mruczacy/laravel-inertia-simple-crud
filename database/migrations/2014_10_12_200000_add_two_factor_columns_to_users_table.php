@@ -9,11 +9,6 @@ use Laravel\Fortify\Fortify;
 
 class AddTwoFactorColumnsToUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
@@ -33,11 +28,6 @@ class AddTwoFactorColumnsToUsersTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
