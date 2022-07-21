@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\Models\User;
@@ -10,7 +12,7 @@ class BrowserSessionsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_other_browser_sessions_can_be_logged_out()
+    public function testOtherBrowserSessionsCanBeLoggedOut(): void
     {
         $this->actingAs($user = User::factory()->create());
 

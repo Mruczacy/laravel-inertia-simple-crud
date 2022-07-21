@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\Models\User;
@@ -12,10 +14,11 @@ class ApiTokenPermissionsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_api_token_permissions_can_be_updated()
+    public function testApiTokenPermissionsCanBeUpdated(): void
     {
         if (! Features::hasApiFeatures()) {
-            return $this->markTestSkipped('API support is not enabled.');
+            $this->markTestSkipped('API support is not enabled.');
+            return;
         }
 
         $this->actingAs($user = User::factory()->withPersonalTeam()->create());
@@ -26,7 +29,7 @@ class ApiTokenPermissionsTest extends TestCase
             'abilities' => ['create', 'read'],
         ]);
 
-        $response = $this->put('/user/api-tokens/'.$token->id, [
+        $response = $this->put('/user/api-tokens/' . $token->id, [
             'name' => $token->name,
             'permissions' => [
                 'delete',

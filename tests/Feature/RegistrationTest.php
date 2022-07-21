@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature;
 
 use App\Providers\RouteServiceProvider;
@@ -12,10 +14,11 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_registration_screen_can_be_rendered()
+    public function testRegistrationScreenCanBeRendered(): void
     {
         if (! Features::enabled(Features::registration())) {
-            return $this->markTestSkipped('Registration support is not enabled.');
+            $this->markTestSkipped('Registration support is not enabled.');
+            return;
         }
 
         $response = $this->get('/register');
@@ -23,10 +26,11 @@ class RegistrationTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_registration_screen_cannot_be_rendered_if_support_is_disabled()
+    public function testRegistrationScreenCannotBeRenderedIfSupportIsDisabled(): void
     {
         if (Features::enabled(Features::registration())) {
-            return $this->markTestSkipped('Registration support is enabled.');
+            $this->markTestSkipped('Registration support is enabled.');
+            return;
         }
 
         $response = $this->get('/register');
@@ -34,10 +38,11 @@ class RegistrationTest extends TestCase
         $response->assertStatus(404);
     }
 
-    public function test_new_users_can_register()
+    public function testNewUsersCanRegister(): void
     {
         if (! Features::enabled(Features::registration())) {
-            return $this->markTestSkipped('Registration support is not enabled.');
+            $this->markTestSkipped('Registration support is not enabled.');
+            return;
         }
 
         $response = $this->post('/register', [
